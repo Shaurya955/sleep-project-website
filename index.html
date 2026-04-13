@@ -122,50 +122,7 @@
   <h2>Visualizations</h2>
 
   <div class="viz-card">
-    <span class="badge d3">Figure 6 · D3.js (Interactive)</span>
-    <h3>Sleep Duration Distribution by Ethnicity</h3>
-    <div class="controls">
-      <span>Ethnicity:</span>
-      <button class="active" id="e-all" onclick="filterDist('All')">All</button>
-      <button id="e-mex" onclick="filterDist('Mexican American')">Mexican American</button>
-      <button id="e-nhb" onclick="filterDist('Non-Hispanic Black')">Non-Hisp. Black</button>
-      <button id="e-nhw" onclick="filterDist('Non-Hispanic White')">Non-Hisp. White</button>
-    </div>
-    <div id="d3-hist"></div>
-    <p class="takeaway">
-      <strong>Takeaway:</strong> Most participants cluster around 6–8 hours of sleep. Non-Hispanic Black participants show a heavier left tail (more short sleepers), consistent with the higher BMIs seen in the heatmap. Mexican American participants skew slightly toward longer sleep durations. <em>Click ethnicity buttons to compare distributions.</em>
-    </p>
-  </div>
-
-  <div class="viz-card">
-    <span class="badge">Figure 1 · Altair (Python)</span>
-    <h3>BMI vs. Weekday Sleep Hours</h3>
-    <img src="images/BMI vs Sleep.png" alt="Scatter plot of BMI vs Weekday Sleep Hours with regression line"/>
-    <p class="takeaway">
-      <strong>Takeaway:</strong> There is a clear negative trend between sleep hours and BMI — participants sleeping fewer hours on weekdays tend to have higher BMIs. The regression line shows those sleeping 2–3 hours average a BMI above 30 (obese range), while those sleeping longer trend lower. This supports the hypothesis that shorter sleep duration is a risk factor for elevated BMI.
-    </p>
-  </div>
-
-  <div class="viz-card">
-    <span class="badge">Figure 2 · Altair (Python)</span>
-    <h3>Average BMI by Weekday Sleep Hours and Ethnicity</h3>
-    <img src="images/Average BMI by Sleep and Ethnicity.png" alt="Heatmap of average BMI by sleep hours and ethnicity"/>
-    <p class="takeaway">
-      <strong>Takeaway:</strong> Ethnicity meaningfully moderates the sleep–BMI relationship. Mexican American and Non-Hispanic Black participants show higher average BMIs across most sleep durations. Both very short (2–3 hrs) and very long (14–15 hrs) sleep are associated with the highest BMIs across groups, suggesting a non-linear relationship rather than a simple one.
-    </p>
-  </div>
-
-  <div class="viz-card">
-    <span class="badge">Figure 3 · Matplotlib (Python)</span>
-    <h3>Weekday Sleep Hours by Moderate Work Activity</h3>
-    <img src="images/improved_activity_chart.png" alt="Boxplot of weekday sleep hours by days of moderate work activity"/>
-    <p class="takeaway">
-      <strong>Takeaway:</strong> People who engage in more days of moderate work activity per week tend to sleep slightly fewer hours. Median sleep hours declines from ~7.5 hrs (1 day/week) toward ~7.2 hrs (5–6 days/week). This confirms that heavier physical work schedules are associated with reduced sleep time.
-    </p>
-  </div>
-
-  <div class="viz-card">
-    <span class="badge d3">Figure 4 · D3.js (Interactive)</span>
+    <span class="badge d3">Figure 1 · D3.js (Interactive)</span>
     <h3>Top 10 Variables Most Correlated with Weekday Sleep</h3>
     <div class="controls">
       <span>Filter:</span>
@@ -180,11 +137,55 @@
   </div>
 
   <div class="viz-card">
+    <span class="badge">Figure 2 · Altair (Python)</span>
+    <h3>BMI vs. Weekday Sleep Hours</h3>
+    <img src="images/BMI vs Sleep.png" alt="Scatter plot of BMI vs Weekday Sleep Hours with regression line"/>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> There is a clear negative trend between sleep hours and BMI — participants sleeping fewer hours on weekdays tend to have higher BMIs. The regression line shows those sleeping 2–3 hours average a BMI above 30 (obese range), while those sleeping longer trend lower. This supports the hypothesis that shorter sleep duration is a risk factor for elevated BMI.
+    </p>
+  </div>
+
+  <div class="viz-card">
+    <span class="badge">Figure 3 · Altair (Python)</span>
+    <h3>Average BMI by Weekday Sleep Hours and Ethnicity</h3>
+    <img src="images/Average BMI by Sleep and Ethnicity.png" alt="Heatmap of average BMI by sleep hours and ethnicity"/>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> Ethnicity meaningfully moderates the sleep–BMI relationship. Mexican American and Non-Hispanic Black participants show higher average BMIs across most sleep durations. Both very short (2–3 hrs) and very long (14–15 hrs) sleep are associated with the highest BMIs across groups, suggesting a non-linear relationship rather than a simple one.
+    </p>
+  </div>
+
+  <div class="viz-card">
+    <span class="badge">Figure 4 · Matplotlib (Python)</span>
+    <h3>Weekday Sleep Hours by Moderate Work Activity</h3>
+    <img src="images/improved_activity_chart.png" alt="Boxplot of weekday sleep hours by days of moderate work activity"/>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> People who engage in more days of moderate work activity per week tend to sleep slightly fewer hours. Median sleep hours declines from ~7.5 hrs (1 day/week) toward ~7.2 hrs (5–6 days/week). This confirms that heavier physical work schedules are associated with reduced sleep time.
+    </p>
+  </div>
+
+
+  <div class="viz-card">
     <span class="badge">Figure 5 · ggplot2 (R)</span>
     <h3>Sleep Category Composition by Birth Country and Gender</h3>
     <img src="images/sleep_category_chart.png" alt="Stacked bar chart of sleep categories by birth country and gender"/>
     <p class="takeaway">
       <strong>Takeaway:</strong> Participants born in Mexico are more likely to fall in the "Recommended" sleep category compared to those born in the U.S., for both men and women. U.S.-born participants show a higher share of short sleep (&lt;7 hrs), reflecting the impact of American work culture on sleep habits. This pattern is consistent across both genders.
+    </p>
+  </div>
+
+   <div class="viz-card">
+    <span class="badge d3">Figure 6 · D3.js (Interactive)</span>
+    <h3>Sleep Duration Distribution by Ethnicity</h3>
+    <div class="controls">
+      <span>Ethnicity:</span>
+      <button class="active" id="e-all" onclick="filterDist('All')">All</button>
+      <button id="e-mex" onclick="filterDist('Mexican American')">Mexican American</button>
+      <button id="e-nhb" onclick="filterDist('Non-Hispanic Black')">Non-Hisp. Black</button>
+      <button id="e-nhw" onclick="filterDist('Non-Hispanic White')">Non-Hisp. White</button>
+    </div>
+    <div id="d3-hist"></div>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> Most participants cluster around 6–8 hours of sleep. Non-Hispanic Black participants show a heavier left tail (more short sleepers), consistent with the higher BMIs seen in the heatmap. Mexican American participants skew slightly toward longer sleep durations. <em>Click ethnicity buttons to compare distributions.</em>
     </p>
   </div>
 
