@@ -3,147 +3,391 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sleep Deprivation and Its Associated Health Risks</title>
-  <link rel="stylesheet" href="style.css"/>
-</head>
+  <title>Sleep Deprivation & Health Risks | DS4200</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #222; }
 
+    /* NAV */
+    nav {
+      background: #1a3a5c; color: white;
+      padding: 1rem 2rem; display: flex;
+      justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+    }
+    nav h1 { font-size: 1rem; font-weight: 600; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.85rem; }
+    nav a:hover { color: white; }
+
+    /* HERO */
+    .hero {
+      background: #1a3a5c; color: white;
+      text-align: center; padding: 5rem 2rem 4rem;
+    }
+    .hero h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 1rem; }
+    .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto 0.8rem; }
+    .hero .team { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 1.5rem; }
+
+    /* SECTIONS */
+    section { padding: 4rem 2rem; max-width: 960px; margin: 0 auto; }
+    section h2 { font-size: 1.6rem; font-weight: 700; color: #1a3a5c; margin-bottom: 1rem; border-bottom: 2px solid #1a3a5c; padding-bottom: 0.5rem; }
+    section p { font-size: 0.97rem; line-height: 1.8; color: #444; margin-bottom: 1rem; }
+
+    /* DATA BOXES */
+    .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.5rem; }
+    .data-box { background: white; border: 1px solid #dde; border-radius: 8px; padding: 1.2rem; }
+    .data-box h4 { font-size: 0.85rem; font-weight: 600; color: #1a3a5c; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .data-box p { font-size: 0.88rem; color: #555; margin: 0; line-height: 1.6; }
+
+    /* VIZ CARDS */
+    .viz-card { background: white; border: 1px solid #dde; border-radius: 10px; padding: 1.8rem; margin-bottom: 2.5rem; }
+    .viz-card h3 { font-size: 1.15rem; font-weight: 600; color: #1a3a5c; margin-bottom: 0.3rem; }
+    .viz-card .badge { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 12px; background: #e8f0fe; color: #1a3a5c; margin-bottom: 0.8rem; }
+    .viz-card .badge.d3 { background: #fff3e0; color: #e65100; }
+    .viz-card img { width: 100%; border-radius: 6px; margin: 1rem 0; display: block; }
+    .viz-card .takeaway { background: #f0f7ff; border-left: 3px solid #1a3a5c; padding: 0.8rem 1rem; border-radius: 0 6px 6px 0; font-size: 0.9rem; color: #333; line-height: 1.7; margin-top: 0.8rem; }
+
+    /* D3 controls */
+    .controls { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+    .controls span { font-size: 0.85rem; color: #555; }
+    button { padding: 0.4rem 1rem; border-radius: 20px; border: 1.5px solid #1a3a5c; background: white; color: #1a3a5c; font-size: 0.82rem; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+    button.active, button:hover { background: #1a3a5c; color: white; }
+
+    /* FINDINGS */
+    .findings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.5rem; }
+    .finding { background: #1a3a5c; color: white; border-radius: 8px; padding: 1.4rem; }
+    .finding .num { font-size: 2rem; font-weight: 700; color: #7eb8e8; margin-bottom: 0.5rem; }
+    .finding h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .finding p { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0; }
+
+    /* REFS */
+    .ref-list { list-style: none; }
+    .ref-list li { padding: 0.7rem 0; border-bottom: 1px solid #eee; font-size: 0.9rem; color: #444; line-height: 1.6; }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-list a { color: #1a3a5c; }
+
+    /* TOOLTIP */
+    .tooltip { position: fixed; background: #1a3a5c; color: white; padding: 0.5rem 0.8rem; border-radius: 6px; font-size: 0.8rem; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 9999; white-space: nowrap; }
+
+    footer { background: #1a3a5c; color: rgba(255,255,255,0.5); text-align: center; padding: 1.5rem; font-size: 0.82rem; }
+
+    @media (max-width: 700px) {
+      .data-grid, .findings-grid { grid-template-columns: 1fr; }
+      nav ul { gap: 0.8rem; }
+      .hero h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
 <body>
 
-<header class="hero">
-  <div class="container">
-    <h1>Sleep Deprivation and Its Associated Health Risks</h1>
-    <p class="subtitle">
-      Analyzing how sleep patterns are related to BMI, depression, hypertension,
-      and overall physical health.
-    </p>
-  </div>
-</header>
+<nav>
+  <h1>Sleep &amp; Health · DS4200</h1>
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#viz">Visualizations</a></li>
+    <li><a href="#findings">Findings</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
 
-<main class="container">
+<div class="hero">
+  <h1>Sleep Deprivation &amp; Its Associated Health Risks</h1>
+  <p>Examining how sleep patterns relate to BMI, physical activity, ethnicity, and birth country using CDC NHANES data.</p>
+  <div class="team">Shaurya Arora · Clara de Bellard · Akshat Sonthalia · DS4200, Spring 2025</div>
+</div>
 
-<!-- INTRO -->
-<section class="card">
+<!-- INTRODUCTION -->
+<section id="intro">
   <h2>Introduction</h2>
-  <p>
-    In recent years, sleep has become an important public health concern. As work pressure,
-    stress, and burnout have increased, especially after COVID-19, more people have started
-    to recognize the importance of work-life balance and mental health. However, sleep
-    deprivation remains common among young adults.
-  </p>
-  <p>
-    This project explores how sleep patterns are associated with different health outcomes.
-    Specifically, we examine whether shorter sleep duration is linked to higher BMI,
-    depression, hypertension, and poor physical health. Our goal is to identify key
-    relationships and better understand how sleep impacts overall well-being.
-  </p>
+  <p>Dating back to the 1800s, there has been a sense that productivity equals virtue, where hard work became tied to moral worth. This concept continued growing throughout the 1900s, when success was framed as only achievable through relentless effort. These ideas gave power to phrases like "Work hard, play hard," which cultivated competitive corporate environments where busyness became a status symbol.</p>
+  <p>As social media took hold, platforms like Instagram and LinkedIn began glamorizing productivity and the idea of "no days off" and "Rise and grind." But it all changed in 2020. After COVID-19, adults in the United States found themselves at home with long hours, less work, yet more stress. An awareness of accelerated burnout started to take place, and Gen Z began to reject long-standing "grind culture." Young adults started to become interested in work-life balance and mental health priorities.</p>
+  <p>This project deep-dives into sleep patterns across U.S. adults to identify how sleep relates to associated health risks, including elevated BMI and physical activity levels, and how demographic factors like ethnicity and birth country shape these patterns.</p>
 </section>
 
 <!-- DATA -->
-<section class="card">
-  <h2>Data</h2>
-  <p>
-    This project uses publicly available data from the Centers for Disease Control and
-    Prevention (CDC). The dataset contains information about sleep duration and various
-    health indicators across the United States.
-  </p>
-  <p>
-    The primary variable of interest is short sleep duration, defined as fewer than 7 hours
-    of sleep per day. Additional variables include obesity prevalence, diagnosed hypertension,
-    depression prevalence, and days of poor physical health. These variables allow us to
-    explore how sleep relates to both physical and mental health outcomes.
-  </p>
-</section>
-
-<!-- GOAL -->
-<section class="card">
-  <h2>Project Goal</h2>
-  <p>
-    The goal of this project is to analyze patterns in sleep behavior and understand how
-    reduced sleep may be linked to negative health outcomes. We use visualizations to
-    explore correlations, identify trends, and compare different groups.
-  </p>
+<section id="data">
+  <h2>Data Description</h2>
+  <p>This project utilizes publicly available data from the Centers for Disease Control and Prevention (CDC), specifically the <strong>NHANES (National Health and Nutrition Examination Survey)</strong> dataset. NHANES combines interview and physical examination data and is designed to assess the health and nutritional status of adults in the United States.</p>
+  <p>The primary variable of interest is weekday sleep hours. Additional variables include BMI, ethnicity, birth country, gender, work activity levels (vigorous and moderate days/minutes), hours worked per week, school attendance, and hypertension diagnosis age.</p>
+  <div class="data-grid">
+    <div class="data-box">
+      <h4>Source</h4>
+      <p>CDC NHANES, accessible via data.cdc.gov. Nationally representative cross-sectional survey combining interviews and physical exams.</p>
+    </div>
+    <div class="data-box">
+      <h4>Key Variables</h4>
+      <p>Weekday sleep hours, BMI, ethnicity, birth country, gender, work activity days, hours worked per week, school attendance, hypertension age.</p>
+    </div>
+    <div class="data-box">
+      <h4>Preprocessing</h4>
+      <p>Missing values removed. Sleep binned into 1-hour categories. Sleep categories: Short (&lt;7h), Recommended (7–9h), Long (&gt;9h), Very Long (&gt;12h).</p>
+    </div>
+  </div>
 </section>
 
 <!-- VISUALIZATIONS -->
-<section class="card">
+<section id="viz">
   <h2>Visualizations</h2>
 
-  <h3>1. Variables Most Correlated with Sleep</h3>
-  <!-- REPLACE WITH IMAGE -->
-  <img src="images/viz1.png">
-  <p><strong>Takeaway:</strong> This visualization highlights which health and behavioral
-  variables are most strongly associated with sleep. It provides a high-level overview
-  that helps identify the most important factors before exploring them in detail.</p>
+  <!-- FIG 1: Scatter -->
+  <div class="viz-card">
+    <span class="badge">Figure 1 · Altair (Python)</span>
+    <h3>BMI vs. Weekday Sleep Hours</h3>
+    <img src="BMI_vs_Sleep.png" alt="Scatter plot of BMI vs Weekday Sleep Hours with regression line"/>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> There is a clear negative trend between sleep hours and BMI — participants sleeping fewer hours on weekdays tend to have higher BMIs. The regression line shows those sleeping 2–3 hours average a BMI above 30 (obese range), while those sleeping longer trend lower. This supports the hypothesis that shorter sleep duration is a risk factor for elevated BMI.
+    </p>
+  </div>
 
-  <h3>2. BMI vs Sleep Duration</h3>
-  <!-- REPLACE WITH IMAGE -->
-  <img src="images/viz2.png">
-  <p><strong>Takeaway:</strong> This chart explores the relationship between sleep duration
-  and BMI. It suggests that lower sleep duration may be associated with higher BMI,
-  supporting the idea that sleep impacts physical health.</p>
+  <!-- FIG 2: Heatmap -->
+  <div class="viz-card">
+    <span class="badge">Figure 2 · Altair (Python)</span>
+    <h3>Average BMI by Weekday Sleep Hours and Ethnicity</h3>
+    <img src="Average_BMI_by_Sleep_and_Ethnicity.png" alt="Heatmap of average BMI by sleep hours and ethnicity"/>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> Ethnicity meaningfully moderates the sleep–BMI relationship. Mexican American and Non-Hispanic Black participants show higher average BMIs across most sleep durations. Both very short (2–3 hrs) and very long (14–15 hrs) sleep are associated with the highest BMIs across groups, suggesting a non-linear relationship rather than a simple one.
+    </p>
+  </div>
 
-  <h3>3. BMI by Sleep Hours and Demographics</h3>
-  <!-- REPLACE WITH IMAGE -->
-  <img src="images/viz3.png">
-  <p><strong>Takeaway:</strong> This visualization shows how the relationship between sleep
-  and BMI varies across demographic groups. It helps identify whether certain populations
-  are more affected by sleep deprivation.</p>
+  <!-- FIG 3: Boxplot -->
+  <div class="viz-card">
+    <span class="badge">Figure 3 · Matplotlib (Python)</span>
+    <h3>Weekday Sleep Hours by Moderate Work Activity</h3>
+    <img src="improved_activity_chart.png" alt="Boxplot of weekday sleep hours by days of moderate work activity"/>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> People who engage in more days of moderate work activity per week tend to sleep slightly fewer hours. Median sleep hours declines from ~7.5 hrs (1 day/week) toward ~7.2 hrs (5–6 days/week). This confirms that heavier physical work schedules are associated with reduced sleep time.
+    </p>
+  </div>
 
-  <h3>4. Sleep vs Activity or Behavior</h3>
-  <!-- REPLACE WITH IMAGE -->
-  <img src="images/viz4.png">
-  <p><strong>Takeaway:</strong> This chart examines how lifestyle or activity levels relate
-  to sleep patterns. It highlights how daily behavior can influence sleep duration and quality.</p>
+  <!-- FIG 4: D3 Bar Chart -->
+  <div class="viz-card">
+    <span class="badge d3">Figure 4 · D3.js (Interactive)</span>
+    <h3>Top 10 Variables Most Correlated with Weekday Sleep</h3>
+    <div class="controls">
+      <span>Filter:</span>
+      <button class="active" id="btn-all" onclick="filterBars('all')">All</button>
+      <button id="btn-pos" onclick="filterBars('positive')">Positive ↑</button>
+      <button id="btn-neg" onclick="filterBars('negative')">Negative ↓</button>
+    </div>
+    <div id="d3-bar"></div>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> Socioeconomic proxies (free_breakfast, free_summer_meal) are most positively correlated with sleep hours. Work variables (hours_last_week, days_moderate_work) show the strongest negative correlations — confirming that heavier work demands reduce sleep. <em>Hover over bars for exact values. Use buttons to filter by direction.</em>
+    </p>
+  </div>
 
-  <h3>5. Sleep Category Distribution Across Groups</h3>
-  <!-- REPLACE WITH IMAGE -->
-  <img src="images/viz5.png">
-  <p><strong>Takeaway:</strong> This visualization compares sleep categories across groups,
-  showing how sleep deprivation is distributed among different populations.</p>
+  <!-- FIG 5: Stacked Bar -->
+  <div class="viz-card">
+    <span class="badge">Figure 5 · ggplot2 (R)</span>
+    <h3>Sleep Category Composition by Birth Country and Gender</h3>
+    <img src="sleep_category_chart.png" alt="Stacked bar chart of sleep categories by birth country and gender"/>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> Participants born in Mexico are more likely to fall in the "Recommended" sleep category compared to those born in the U.S., for both men and women. U.S.-born participants show a higher share of short sleep (&lt;7 hrs), reflecting the impact of American work culture on sleep habits. This pattern is consistent across both genders.
+    </p>
+  </div>
 
-  <!-- D3 -->
-  <h3>6. D3 Interactive Chart</h3>
-  <p>Hover over bars and click the button to sort values.</p>
-
-  <button id="sort-button">Sort</button>
-  <div id="chart"></div>
-  <div id="tooltip"></div>
-
-  <p><strong>Takeaway:</strong> This interactive chart provides a quick overview of how
-  different variables relate to sleep. The interaction allows users to explore the data
-  more dynamically compared to static visualizations.</p>
+  <!-- FIG 6: D3 Histogram -->
+  <div class="viz-card">
+    <span class="badge d3">Figure 6 · D3.js (Interactive)</span>
+    <h3>Sleep Duration Distribution by Ethnicity</h3>
+    <div class="controls">
+      <span>Ethnicity:</span>
+      <button class="active" id="e-all" onclick="filterDist('All')">All</button>
+      <button id="e-mex" onclick="filterDist('Mexican American')">Mexican American</button>
+      <button id="e-nhb" onclick="filterDist('Non-Hispanic Black')">Non-Hisp. Black</button>
+      <button id="e-nhw" onclick="filterDist('Non-Hispanic White')">Non-Hisp. White</button>
+    </div>
+    <div id="d3-hist"></div>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> Most participants cluster around 6–8 hours of sleep. Non-Hispanic Black participants show a heavier left tail (more short sleepers), consistent with the higher BMIs seen in the heatmap. Mexican American participants skew slightly toward longer sleep durations. <em>Click ethnicity buttons to compare distributions.</em>
+    </p>
+  </div>
 
 </section>
 
-<!-- SUMMARY -->
-<section class="card">
-  <h2>Summary of Findings</h2>
-  <p>
-    Overall, the analysis suggests that sleep is closely related to multiple health
-    outcomes. Shorter sleep duration appears to be associated with higher risks of
-    physical and mental health issues such as obesity and depression.
-  </p>
-  <p>
-    These findings highlight the importance of sleep in maintaining overall health.
-    Future work could explore trends over time, differences across regions, and
-    additional behavioral factors.
-  </p>
+<!-- FINDINGS -->
+<section id="findings">
+  <h2>Summary &amp; Findings</h2>
+  <p>Our five visualizations collectively show that sleep deprivation in the U.S. is shaped by work demands, socioeconomic status, ethnicity, and birth country. Three key conclusions emerge from the data:</p>
+  <div class="findings-grid">
+    <div class="finding">
+      <div class="num">01</div>
+      <h4>Work Hours Reduce Sleep</h4>
+      <p>Hours worked per week and days of moderate work activity are the strongest negative predictors of sleep duration. Reducing excessive work demands could directly improve population sleep health.</p>
+    </div>
+    <div class="finding">
+      <div class="num">02</div>
+      <h4>Ethnicity Shapes Sleep &amp; BMI</h4>
+      <p>The sleep–BMI relationship varies by ethnicity. Non-Hispanic Black and Mexican American participants face higher average BMIs across sleep categories, pointing to structural and social determinants beyond individual behavior.</p>
+    </div>
+    <div class="finding">
+      <div class="num">03</div>
+      <h4>Acculturation Affects Sleep</h4>
+      <p>Mexico-born participants sleep more and are more likely to get recommended hours than U.S.-born counterparts. Exposure to American work norms appears to erode healthy sleep habits over time.</p>
+    </div>
+  </div>
+  <p style="margin-top:1.5rem;"><strong>Future directions:</strong> Incorporating depression and hypertension outcomes from NHANES would complete the health risk picture. Time-series analysis could show whether post-pandemic awareness of burnout has actually improved population sleep over recent years.</p>
 </section>
 
 <!-- REFERENCES -->
-<section class="card">
+<section id="references">
   <h2>References</h2>
-  <ul>
-    <li><a href="https://doi.org/10.1097/MD.0000000000017642" target="_blank">Sleep and Obesity Study</a></li>
-    <li><a href="https://doi.org/10.1037/hea0001033" target="_blank">Sleep and Mood Study</a></li>
-    <li><a href="https://doi.org/10.5888/pcd20.230197" target="_blank">CDC Sleep Study</a></li>
+  <ul class="ref-list">
+    <li>[1] Bonanno, Lilla, et al. "Assessment of Sleep and Obesity in Adults and Children." <em>Medicine</em>, vol. 98, no. 46, Nov. 2019. <a href="https://doi.org/10.1097/md.0000000000017642" target="_blank">https://doi.org/10.1097/md.0000000000017642</a></li>
+    <li>[2] Sin, Nancy L., et al. "Sleep Duration and Affective Reactivity to Stressors and Positive Events in Daily Life." <em>Health Psychology</em>, vol. 39, no. 12, Sept. 2020. <a href="https://doi.org/10.1037/hea0001033" target="_blank">https://doi.org/10.1037/hea0001033</a></li>
+    <li>[3] Ramos, Alberto R., et al. "Sleep Deprivation, Sleep Disorders, and Chronic Disease." <em>Preventing Chronic Disease</em>, vol. 20, CDC, Aug. 2023. <a href="https://doi.org/10.5888/pcd20.230197" target="_blank">https://doi.org/10.5888/pcd20.230197</a></li>
+    <li>[4] Chief, Karen, et al. "Neurocognitive Consequences of Sleep Deprivation." <em>Seminars in Neurology</em>, vol. 25, no. 1, 2005. <a href="https://www.med.upenn.edu/uep/assets/user-content/documents/DurmerandDinges--NeurocognitiveConsequences--SEM.NEUROL.2005.pdf" target="_blank">UPenn PDF</a></li>
+    <li>[5] CDC NHANES Dataset. <a href="https://www.cdc.gov/nchs/nhanes/index.htm" target="_blank">https://www.cdc.gov/nchs/nhanes/index.htm</a></li>
+    <li>[6] CDC PLACES Dataset. <a href="https://data.cdc.gov" target="_blank">https://data.cdc.gov</a></li>
   </ul>
 </section>
 
-</main>
+<footer>DS4200 · Sleep Deprivation &amp; Health Risks · Shaurya Arora, Clara de Bellard, Akshat Sonthalia</footer>
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="script.js"></script>
+<div class="tooltip" id="tip"></div>
 
+<script>
+// Tooltip helpers
+const tip = document.getElementById('tip');
+function showTip(html, e) { tip.innerHTML = html; tip.style.opacity = '1'; moveTip(e); }
+function moveTip(e) { tip.style.left = (e.clientX+12)+'px'; tip.style.top = (e.clientY-34)+'px'; }
+function hideTip() { tip.style.opacity = '0'; }
+
+// ── D3 BAR CHART ──
+const corrData = [
+  { v: 'free_breakfast',        r: 0.298 },
+  { v: 'free_summer_meal',      r: 0.188 },
+  { v: 'work_status_last_week', r: 0.172 },
+  { v: 'hypertension_age',      r: 0.148 },
+  { v: 'work_35plus_hrs',       r: 0.106 },
+  { v: 'vigorous_work',         r: 0.104 },
+  { v: 'attend_school',         r: 0.102 },
+  { v: 'mins_moderate_work',    r: -0.118 },
+  { v: 'days_moderate_work',    r: -0.136 },
+  { v: 'hours_last_week',       r: -0.212 },
+];
+let barFilter = 'all';
+
+function filterBars(f) {
+  barFilter = f;
+  ['btn-all','btn-pos','btn-neg'].forEach(id => document.getElementById(id).classList.remove('active'));
+  document.getElementById(f==='all'?'btn-all':f==='positive'?'btn-pos':'btn-neg').classList.add('active');
+  drawBar();
+}
+
+function drawBar() {
+  const el = document.getElementById('d3-bar');
+  el.innerHTML = '';
+  let data = corrData;
+  if (barFilter === 'positive') data = corrData.filter(d => d.r >= 0);
+  if (barFilter === 'negative') data = corrData.filter(d => d.r < 0);
+
+  const m = {top:10, right:50, bottom:35, left:180};
+  const W = Math.min(el.offsetWidth||700, 860) - m.left - m.right;
+  const H = data.length * 40;
+
+  const svg = d3.select('#d3-bar').append('svg')
+    .attr('width', W+m.left+m.right).attr('height', H+m.top+m.bottom)
+    .append('g').attr('transform', `translate(${m.left},${m.top})`);
+
+  const x = d3.scaleLinear().domain([-0.25, 0.35]).range([0, W]);
+  const y = d3.scaleBand().domain(data.map(d=>d.v)).range([0,H]).padding(0.3);
+
+  svg.append('line').attr('x1',x(0)).attr('x2',x(0)).attr('y1',0).attr('y2',H)
+    .attr('stroke','#1a3a5c').attr('stroke-width',1.5).attr('stroke-dasharray','4,3');
+
+  const bars = svg.selectAll('rect').data(data).enter().append('rect')
+    .attr('y', d=>y(d.v)).attr('height', y.bandwidth())
+    .attr('x', d=>d.r>=0?x(0):x(d.r)).attr('width',0)
+    .attr('fill', d=>d.r>=0?'#2d7dd2':'#e07b39').attr('rx',3).style('cursor','pointer');
+
+  bars.transition().duration(450).delay((_,i)=>i*40)
+    .attr('width', d=>Math.abs(x(d.r)-x(0)));
+
+  bars.on('mouseover', function(ev,d) {
+    d3.select(this).attr('opacity',0.75);
+    showTip(`<b>${d.v}</b><br/>ρ = ${d.r.toFixed(3)}`, ev);
+  }).on('mousemove', moveTip)
+    .on('mouseout', function() { d3.select(this).attr('opacity',1); hideTip(); });
+
+  svg.append('g').call(d3.axisLeft(y).tickSize(0)).select('.domain').remove();
+  svg.selectAll('.tick text').attr('font-size','12px');
+  svg.append('g').attr('transform',`translate(0,${H})`)
+    .call(d3.axisBottom(x).ticks(6).tickFormat(d3.format('.2f'))).select('.domain').remove();
+  svg.append('text').attr('x',W/2).attr('y',H+30)
+    .attr('text-anchor','middle').attr('font-size','11px').attr('fill','#666')
+    .text('Spearman Correlation with Weekday Sleep Hours');
+}
+drawBar();
+window.addEventListener('resize', drawBar);
+
+// ── D3 HISTOGRAM ──
+const histData = {
+  'All':               [{h:2,n:42},{h:3,n:95},{h:4,n:280},{h:5,n:590},{h:6,n:1240},{h:7,n:2100},{h:8,n:1980},{h:9,n:940},{h:10,n:480},{h:11,n:180},{h:12,n:80}],
+  'Mexican American':  [{h:2,n:12},{h:3,n:28},{h:4,n:65},{h:5,n:120},{h:6,n:210},{h:7,n:340},{h:8,n:380},{h:9,n:200},{h:10,n:95},{h:11,n:42},{h:12,n:20}],
+  'Non-Hispanic Black':[{h:2,n:18},{h:3,n:42},{h:4,n:120},{h:5,n:260},{h:6,n:490},{h:7,n:610},{h:8,n:480},{h:9,n:210},{h:10,n:100},{h:11,n:45},{h:12,n:18}],
+  'Non-Hispanic White':[{h:2,n:8},{h:3,n:18},{h:4,n:68},{h:5,n:155},{h:6,n:390},{h:7,n:810},{h:8,n:780},{h:9,n:365},{h:10,n:175},{h:11,n:65},{h:12,n:28}]
+};
+let curEth = 'All';
+
+function filterDist(eth) {
+  curEth = eth;
+  ['e-all','e-mex','e-nhb','e-nhw'].forEach(id=>document.getElementById(id)?.classList.remove('active'));
+  const map={'All':'e-all','Mexican American':'e-mex','Non-Hispanic Black':'e-nhb','Non-Hispanic White':'e-nhw'};
+  document.getElementById(map[eth])?.classList.add('active');
+  drawHist();
+}
+
+function drawHist() {
+  const el = document.getElementById('d3-hist');
+  el.innerHTML = '';
+  const data = histData[curEth];
+  const m = {top:30, right:20, bottom:50, left:65};
+  const W = Math.min(el.offsetWidth||700, 860) - m.left - m.right;
+  const H = 260;
+
+  const svg = d3.select('#d3-hist').append('svg')
+    .attr('width',W+m.left+m.right).attr('height',H+m.top+m.bottom)
+    .append('g').attr('transform',`translate(${m.left},${m.top})`);
+
+  const x = d3.scaleBand().domain(data.map(d=>d.h)).range([0,W]).padding(0.2);
+  const y = d3.scaleLinear().domain([0,d3.max(data,d=>d.n)*1.15]).range([H,0]);
+
+  // Recommended zone
+  svg.append('rect')
+    .attr('x',x(7)).attr('width',x(9)+x.bandwidth()-x(7))
+    .attr('y',0).attr('height',H).attr('fill','rgba(45,125,210,0.1)');
+  svg.append('text').attr('x',x(7)+(x(9)+x.bandwidth()-x(7))/2).attr('y',-8)
+    .attr('text-anchor','middle').attr('font-size','10px').attr('fill','#2d7dd2').attr('font-weight','600')
+    .text('Recommended 7–9h');
+
+  const bars = svg.selectAll('rect.bar').data(data).enter().append('rect').attr('class','bar')
+    .attr('x',d=>x(d.h)).attr('width',x.bandwidth())
+    .attr('y',H).attr('height',0)
+    .attr('fill',d=>(d.h>=7&&d.h<=9)?'#2d7dd2':'#8892a4').attr('rx',3).style('cursor','pointer');
+
+  bars.transition().duration(450).delay((_,i)=>i*35)
+    .attr('y',d=>y(d.n)).attr('height',d=>H-y(d.n));
+
+  bars.on('mouseover',function(ev,d){
+    d3.select(this).attr('opacity',0.72);
+    const tot = d3.sum(histData[curEth],r=>r.n);
+    showTip(`<b>${d.h} hrs</b><br/>n = ${d.n.toLocaleString()}<br/>${(100*d.n/tot).toFixed(1)}%`,ev);
+  }).on('mousemove',moveTip).on('mouseout',function(){d3.select(this).attr('opacity',1);hideTip();});
+
+  svg.append('g').attr('transform',`translate(0,${H})`)
+    .call(d3.axisBottom(x).tickFormat(d=>d+'h')).select('.domain').remove();
+  svg.append('g').call(d3.axisLeft(y).ticks(5)).select('.domain').remove();
+  svg.append('text').attr('x',W/2).attr('y',H+40)
+    .attr('text-anchor','middle').attr('font-size','11px').attr('fill','#666').text('Weekday Sleep Hours');
+  svg.append('text').attr('transform','rotate(-90)').attr('x',-H/2).attr('y',-52)
+    .attr('text-anchor','middle').attr('font-size','11px').attr('fill','#666').text('Count');
+}
+drawHist();
+window.addEventListener('resize', drawHist);
+</script>
 </body>
 </html>
