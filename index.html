@@ -1,1 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Deprivation and Its Associated Health Risks</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="tag">DS4200 Final Project</p>
+      <h1>Sleep Deprivation and Its Associated Health Risks</h1>
+      <p class="subtitle">
+        Exploring how sleep patterns relate to BMI, depression, blood pressure,
+        and other health outcomes.
+      </p>
 
+      <nav class="top-nav">
+        <a href="#intro">Introduction</a>
+        <a href="#data">Data</a>
+        <a href="#visualizations">Visualizations</a>
+        <a href="#findings">Findings</a>
+        <a href="#references">References</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="intro" class="card">
+      <h2>Introduction</h2>
+      <p>
+        Sleep plays a critical role in both physical and mental health. In recent
+        years, growing awareness of burnout, stress, and work-life balance has made
+        sleep an important public health topic.
+      </p>
+      <p>
+        This project examines how sleep deprivation is associated with health risks
+        such as elevated BMI, depression, hypertension, and poor physical health.
+        Our goal is to identify which health indicators appear most connected to
+        sleep and to show how these patterns vary across different groups.
+      </p>
+    </section>
+
+    <section id="data" class="card">
+      <h2>Data</h2>
+      <p>
+        This project uses publicly available CDC health data. The primary variable
+        of interest is short sleep duration, defined as fewer than 7 hours of sleep
+        per 24-hour period. Additional variables of interest include obesity,
+        diagnosed hypertension, depression prevalence, and poor physical health.
+      </p>
+      <p>
+        The overall task of this project is to explore patterns in sleep and
+        understand how reduced sleep may be associated with negative health outcomes.
+      </p>
+    </section>
+
+    <section id="visualizations" class="card">
+      <h2>Visualizations</h2>
+      <p class="section-note">
+        These figures are arranged from general overview to more specific case
+        comparisons so the story flows clearly across the webpage.
+      </p>
+
+      <article class="viz-block">
+        <h3>1. Overview of Variables Associated with Sleep</h3>
+
+        <!-- PASTE IMAGE VERSION HERE -->
+        <!-- Example:
+        <img src="images/viz1.png" alt="Top variables correlated with sleep">
+        -->
+
+        <!-- OR PASTE ALTAIR / PLOTLY HTML EMBED HERE -->
+        <!-- Example:
+        <iframe src="charts/viz1.html" title="Top variables correlated with sleep"></iframe>
+        -->
+
+        <p class="interaction-note">
+          Interaction: explain hover, dropdown, or filtering here if this figure is interactive.
+        </p>
+        <p>
+          <strong>Takeaway:</strong> Write 2 to 3 sentences explaining what the viewer should learn
+          from this figure.
+        </p>
+      </article>
+
+      <article class="viz-block">
+        <h3>2. BMI vs Sleep Duration</h3>
+
+        <!-- PASTE IMAGE VERSION HERE -->
+        <!-- Example:
+        <img src="images/viz2.png" alt="BMI versus sleep duration">
+        -->
+
+        <!-- OR PASTE ALTAIR / PLOTLY HTML EMBED HERE -->
+        <!-- Example:
+        <iframe src="charts/viz2.html" title="BMI versus sleep duration"></iframe>
+        -->
+
+        <p class="interaction-note">
+          Interaction: explain any hover details, dropdown menu, or regression toggle here.
+        </p>
+        <p>
+          <strong>Takeaway:</strong> Write 2 to 3 sentences explaining whether shorter sleep appears
+          to be associated with higher BMI.
+        </p>
+      </article>
+
+      <article class="viz-block">
+        <h3>3. BMI by Sleep Hours and Demographic Group</h3>
+
+        <!-- PASTE IMAGE VERSION HERE -->
+        <!-- Example:
+        <img src="images/viz3.png" alt="BMI by sleep hours and ethnicity">
+        -->
+
+        <!-- OR PASTE ALTAIR / PLOTLY HTML EMBED HERE -->
+        <!-- Example:
+        <iframe src="charts/viz3.html" title="BMI by sleep hours and demographic group"></iframe>
+        -->
+
+        <p class="interaction-note">
+          Interaction: explain hover or filtering by group here.
+        </p>
+        <p>
+          <strong>Takeaway:</strong> Write 2 to 3 sentences describing how the relationship changes
+          across groups.
+        </p>
+      </article>
+
+      <article class="viz-block">
+        <h3>4. Sleep Patterns by Activity or Health Behavior</h3>
+
+        <!-- PASTE IMAGE VERSION HERE -->
+        <!-- Example:
+        <img src="images/viz4.png" alt="Sleep patterns by activity">
+        -->
+
+        <!-- OR PASTE ALTAIR / PLOTLY HTML EMBED HERE -->
+        <!-- Example:
+        <iframe src="charts/viz4.html" title="Sleep patterns by activity"></iframe>
+        -->
+
+        <p class="interaction-note">
+          Interaction: explain legend use, hover info, or category selection here.
+        </p>
+        <p>
+          <strong>Takeaway:</strong> Write 2 to 3 sentences explaining how lifestyle or behavior may
+          relate to sleep duration.
+        </p>
+      </article>
+
+      <article class="viz-block">
+        <h3>5. Group Comparison of Sleep Categories</h3>
+
+        <!-- PASTE IMAGE VERSION HERE -->
+        <!-- Example:
+        <img src="images/viz5.png" alt="Sleep category composition by group">
+        -->
+
+        <!-- OR PASTE ALTAIR / PLOTLY HTML EMBED HERE -->
+        <!-- Example:
+        <iframe src="charts/viz5.html" title="Group comparison of sleep categories"></iframe>
+        -->
+
+        <p class="interaction-note">
+          Interaction: explain hover, clickable legend, or filters here.
+        </p>
+        <p>
+          <strong>Takeaway:</strong> Write 2 to 3 sentences explaining how sleep distributions vary
+          across groups.
+        </p>
+      </article>
+
+      <article class="viz-block">
+        <h3>6. D3 Visualization</h3>
+
+        <!-- REQUIRED D3 SECTION -->
+        <!-- PASTE D3 CONTAINER HERE -->
+        <div id="d3-chart"></div>
+
+        <!-- If you get a separate D3 js file from teammate, keep this line -->
+        <script src="script.js"></script>
+
+        <p class="interaction-note">
+          Interaction: explain the D3 interactions here, such as hover, zoom, click, or filtering.
+        </p>
+        <p>
+          <strong>Takeaway:</strong> Write 2 to 3 sentences explaining what the D3 figure adds that
+          the other figures do not show.
+        </p>
+      </article>
+    </section>
+
+    <section id="findings" class="card">
+      <h2>Summary of Findings</h2>
+      <p>
+        Overall, the visualizations suggest that sleep is connected to multiple health
+        outcomes rather than a single isolated factor. Shorter sleep appears to align
+        with worse physical and mental health indicators in several parts of the analysis.
+      </p>
+      <p>
+        In the future, this project could be extended by examining changes over time in
+        more detail, comparing additional age groups, or testing whether these
+        relationships remain consistent across different regions and populations.
+      </p>
+    </section>
+
+    <section id="references" class="card">
+      <h2>References</h2>
+      <ul class="references">
+        <li>
+          <a href="https://doi.org/10.1097/MD.0000000000017642" target="_blank">
+            Bonanno et al. — Assessment of Sleep and Obesity in Adults and Children
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1037/hea0001033" target="_blank">
+            Sin et al. — Sleep Duration and Affective Reactivity to Stressors and Positive Events in Daily Life
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.5888/pcd20.230197" target="_blank">
+            Ramos, Wheaton, and Johnson — Sleep Deprivation, Sleep Disorders, and Chronic Disease
+          </a>
+        </li>
+        <li>
+          <a href="https://www.med.upenn.edu/uep/assets/user-content/documents/DurmerandDinges--NeurocognitiveConsequences--SEM.NEUROL.2005.pdf" target="_blank">
+            Chief, Durmer, and Dinges — Neurocognitive Consequences of Sleep Deprivation
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
