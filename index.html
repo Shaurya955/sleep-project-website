@@ -13,7 +13,8 @@
   <div class="container">
     <h1>Sleep Deprivation and Its Associated Health Risks</h1>
     <p class="subtitle">
-      Analyzing how sleep patterns relate to BMI, depression, and overall health.
+      Analyzing how sleep patterns are related to BMI, depression, hypertension,
+      and overall physical health.
     </p>
   </div>
 </header>
@@ -24,14 +25,16 @@
 <section class="card">
   <h2>Introduction</h2>
   <p>
-    Sleep has become an important public health concern in recent years. As stress,
-    burnout, and demanding lifestyles have increased, more individuals—especially
-    young adults—experience sleep deprivation.
+    In recent years, sleep has become an important public health concern. As work pressure,
+    stress, and burnout have increased, especially after COVID-19, more people have started
+    to recognize the importance of work-life balance and mental health. However, sleep
+    deprivation remains common among young adults.
   </p>
   <p>
-    This project explores how sleep duration is associated with health outcomes such as BMI,
-    depression, and physical health. The goal is to identify patterns and understand how
-    reduced sleep impacts overall well-being.
+    This project explores how sleep patterns are associated with different health outcomes.
+    Specifically, we examine whether shorter sleep duration is linked to higher BMI,
+    depression, hypertension, and poor physical health. Our goal is to identify key
+    relationships and better understand how sleep impacts overall well-being.
   </p>
 </section>
 
@@ -39,58 +42,91 @@
 <section class="card">
   <h2>Data</h2>
   <p>
-    This project uses publicly available data from the CDC. The dataset includes
-    sleep duration and health-related variables across the United States.
+    This project uses publicly available data from the Centers for Disease Control and
+    Prevention (CDC). The dataset contains information about sleep duration and various
+    health indicators across the United States.
   </p>
   <p>
-    The main variable is short sleep duration (less than 7 hours). Additional variables
-    include obesity, hypertension, depression, and physical health.
+    The primary variable of interest is short sleep duration, defined as fewer than 7 hours
+    of sleep per day. Additional variables include obesity prevalence, diagnosed hypertension,
+    depression prevalence, and days of poor physical health. These variables allow us to
+    explore how sleep relates to both physical and mental health outcomes.
   </p>
 </section>
 
-<!-- VISUALS -->
+<!-- GOAL -->
+<section class="card">
+  <h2>Project Goal</h2>
+  <p>
+    The goal of this project is to analyze patterns in sleep behavior and understand how
+    reduced sleep may be linked to negative health outcomes. We use visualizations to
+    explore correlations, identify trends, and compare different groups.
+  </p>
+</section>
+
+<!-- VISUALIZATIONS -->
 <section class="card">
   <h2>Visualizations</h2>
 
   <h3>1. Variables Most Correlated with Sleep</h3>
+  <!-- REPLACE WITH IMAGE -->
   <img src="images/viz1.png">
-  <p><strong>Takeaway:</strong> This chart shows the variables most strongly associated with sleep. Positive correlations suggest structured routines may improve sleep, while negative correlations indicate increased workload may reduce sleep.</p>
+  <p><strong>Takeaway:</strong> This visualization highlights which health and behavioral
+  variables are most strongly associated with sleep. It provides a high-level overview
+  that helps identify the most important factors before exploring them in detail.</p>
 
   <h3>2. BMI vs Sleep Duration</h3>
+  <!-- REPLACE WITH IMAGE -->
   <img src="images/viz2.png">
-  <p><strong>Takeaway:</strong> This scatter plot shows a slight negative relationship between sleep and BMI, suggesting that lower sleep may be linked to higher body mass.</p>
+  <p><strong>Takeaway:</strong> This chart explores the relationship between sleep duration
+  and BMI. It suggests that lower sleep duration may be associated with higher BMI,
+  supporting the idea that sleep impacts physical health.</p>
 
-  <h3>3. BMI by Sleep and Ethnicity</h3>
+  <h3>3. BMI by Sleep Hours and Demographics</h3>
+  <!-- REPLACE WITH IMAGE -->
   <img src="images/viz3.png">
-  <p><strong>Takeaway:</strong> This heatmap shows how BMI varies across sleep levels and demographic groups. Lower sleep durations generally show higher BMI values.</p>
+  <p><strong>Takeaway:</strong> This visualization shows how the relationship between sleep
+  and BMI varies across demographic groups. It helps identify whether certain populations
+  are more affected by sleep deprivation.</p>
 
-  <h3>4. Sleep vs Work Activity</h3>
+  <h3>4. Sleep vs Activity or Behavior</h3>
+  <!-- REPLACE WITH IMAGE -->
   <img src="images/viz4.png">
-  <p><strong>Takeaway:</strong> Sleep remains relatively stable across activity levels, but slight decreases suggest higher workload may reduce sleep.</p>
+  <p><strong>Takeaway:</strong> This chart examines how lifestyle or activity levels relate
+  to sleep patterns. It highlights how daily behavior can influence sleep duration and quality.</p>
 
-  <h3>5. Sleep Category Distribution</h3>
+  <h3>5. Sleep Category Distribution Across Groups</h3>
+  <!-- REPLACE WITH IMAGE -->
   <img src="images/viz5.png">
-  <p><strong>Takeaway:</strong> This chart shows how sleep categories vary across gender and birth country, highlighting differences in sleep patterns among groups.</p>
+  <p><strong>Takeaway:</strong> This visualization compares sleep categories across groups,
+  showing how sleep deprivation is distributed among different populations.</p>
 
   <!-- D3 -->
-  <h3>6. Interactive D3 Chart</h3>
+  <h3>6. D3 Interactive Chart</h3>
+  <p>Hover over bars and click the button to sort values.</p>
+
   <button id="sort-button">Sort</button>
   <div id="chart"></div>
   <div id="tooltip"></div>
 
-  <p><strong>Takeaway:</strong> This interactive chart allows users to explore how variables relate to sleep using sorting and hover interaction.</p>
+  <p><strong>Takeaway:</strong> This interactive chart provides a quick overview of how
+  different variables relate to sleep. The interaction allows users to explore the data
+  more dynamically compared to static visualizations.</p>
 
 </section>
 
 <!-- SUMMARY -->
 <section class="card">
-  <h2>Summary</h2>
+  <h2>Summary of Findings</h2>
   <p>
-    The analysis shows that sleep is strongly connected to multiple health outcomes.
-    Reduced sleep appears to be associated with higher BMI and poorer health indicators.
+    Overall, the analysis suggests that sleep is closely related to multiple health
+    outcomes. Shorter sleep duration appears to be associated with higher risks of
+    physical and mental health issues such as obesity and depression.
   </p>
   <p>
-    Future work could explore trends over time and differences across regions or age groups.
+    These findings highlight the importance of sleep in maintaining overall health.
+    Future work could explore trends over time, differences across regions, and
+    additional behavioral factors.
   </p>
 </section>
 
@@ -98,9 +134,9 @@
 <section class="card">
   <h2>References</h2>
   <ul>
-    <li><a href="https://doi.org/10.1097/MD.0000000000017642">Sleep & Obesity Study</a></li>
-    <li><a href="https://doi.org/10.1037/hea0001033">Sleep & Mood Study</a></li>
-    <li><a href="https://doi.org/10.5888/pcd20.230197">CDC Sleep Study</a></li>
+    <li><a href="https://doi.org/10.1097/MD.0000000000017642" target="_blank">Sleep and Obesity Study</a></li>
+    <li><a href="https://doi.org/10.1037/hea0001033" target="_blank">Sleep and Mood Study</a></li>
+    <li><a href="https://doi.org/10.5888/pcd20.230197" target="_blank">CDC Sleep Study</a></li>
   </ul>
 </section>
 
