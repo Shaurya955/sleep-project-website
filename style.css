@@ -105,26 +105,13 @@ h3 {
   padding-top: 0;
 }
 
-img,
-iframe {
+img {
   width: 100%;
   max-width: 900px;
   display: block;
   margin: 14px auto;
   border-radius: 10px;
-}
-
-iframe {
-  min-height: 480px;
-  border: none;
-}
-
-#d3-chart {
-  width: 100%;
-  min-height: 500px;
-  margin: 14px 0;
-  border: 1px dashed #b8c7d8;
-  border-radius: 12px;
+  border: 1px solid #d6e0ea;
   background: #eef3f8;
 }
 
@@ -140,6 +127,39 @@ iframe {
   color: #1f5f96;
 }
 
+#chart {
+  width: 100%;
+  margin-top: 18px;
+  overflow-x: auto;
+}
+
+#tooltip {
+  position: absolute;
+  opacity: 0;
+  background: white;
+  border: 1px solid #cdd8e4;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+#sort-button {
+  padding: 10px 16px;
+  border: none;
+  background: #1f5f96;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin: 10px 0 12px;
+}
+
+#sort-button:hover {
+  background: #184c79;
+}
+
 @media (max-width: 700px) {
   h1 {
     font-size: 2rem;
@@ -147,5 +167,14 @@ iframe {
 
   .card {
     padding: 20px;
+  }
+
+  .top-nav {
+    gap: 8px;
+  }
+
+  .top-nav a {
+    padding: 7px 12px;
+    font-size: 0.9rem;
   }
 }
