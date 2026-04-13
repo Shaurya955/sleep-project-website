@@ -10,7 +10,6 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #222; }
 
-    /* NAV */
     nav {
       background: #1a3a5c; color: white;
       padding: 1rem 2rem; display: flex;
@@ -22,7 +21,6 @@
     nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.85rem; }
     nav a:hover { color: white; }
 
-    /* HERO */
     .hero {
       background: #1a3a5c; color: white;
       text-align: center; padding: 5rem 2rem 4rem;
@@ -31,18 +29,15 @@
     .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto 0.8rem; }
     .hero .team { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 1.5rem; }
 
-    /* SECTIONS */
     section { padding: 4rem 2rem; max-width: 960px; margin: 0 auto; }
     section h2 { font-size: 1.6rem; font-weight: 700; color: #1a3a5c; margin-bottom: 1rem; border-bottom: 2px solid #1a3a5c; padding-bottom: 0.5rem; }
     section p { font-size: 0.97rem; line-height: 1.8; color: #444; margin-bottom: 1rem; }
 
-    /* DATA BOXES */
     .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.5rem; }
     .data-box { background: white; border: 1px solid #dde; border-radius: 8px; padding: 1.2rem; }
     .data-box h4 { font-size: 0.85rem; font-weight: 600; color: #1a3a5c; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
     .data-box p { font-size: 0.88rem; color: #555; margin: 0; line-height: 1.6; }
 
-    /* VIZ CARDS */
     .viz-card { background: white; border: 1px solid #dde; border-radius: 10px; padding: 1.8rem; margin-bottom: 2.5rem; }
     .viz-card h3 { font-size: 1.15rem; font-weight: 600; color: #1a3a5c; margin-bottom: 0.3rem; }
     .viz-card .badge { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 12px; background: #e8f0fe; color: #1a3a5c; margin-bottom: 0.8rem; }
@@ -50,26 +45,22 @@
     .viz-card img { width: 100%; border-radius: 6px; margin: 1rem 0; display: block; }
     .viz-card .takeaway { background: #f0f7ff; border-left: 3px solid #1a3a5c; padding: 0.8rem 1rem; border-radius: 0 6px 6px 0; font-size: 0.9rem; color: #333; line-height: 1.7; margin-top: 0.8rem; }
 
-    /* D3 controls */
     .controls { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
     .controls span { font-size: 0.85rem; color: #555; }
     button { padding: 0.4rem 1rem; border-radius: 20px; border: 1.5px solid #1a3a5c; background: white; color: #1a3a5c; font-size: 0.82rem; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.15s; }
     button.active, button:hover { background: #1a3a5c; color: white; }
 
-    /* FINDINGS */
     .findings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.5rem; }
     .finding { background: #1a3a5c; color: white; border-radius: 8px; padding: 1.4rem; }
     .finding .num { font-size: 2rem; font-weight: 700; color: #7eb8e8; margin-bottom: 0.5rem; }
     .finding h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
     .finding p { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0; }
 
-    /* REFS */
     .ref-list { list-style: none; }
     .ref-list li { padding: 0.7rem 0; border-bottom: 1px solid #eee; font-size: 0.9rem; color: #444; line-height: 1.6; }
     .ref-list li:last-child { border-bottom: none; }
     .ref-list a { color: #1a3a5c; }
 
-    /* TOOLTIP */
     .tooltip { position: fixed; background: #1a3a5c; color: white; padding: 0.5rem 0.8rem; border-radius: 6px; font-size: 0.8rem; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 9999; white-space: nowrap; }
 
     footer { background: #1a3a5c; color: rgba(255,255,255,0.5); text-align: center; padding: 1.5rem; font-size: 0.82rem; }
@@ -100,7 +91,6 @@
   <div class="team">Shaurya Arora · Clara de Bellard · Akshat Sonthalia · DS4200, Spring 2025</div>
 </div>
 
-<!-- INTRODUCTION -->
 <section id="intro">
   <h2>Introduction</h2>
   <p>Dating back to the 1800s, there has been a sense that productivity equals virtue, where hard work became tied to moral worth. This concept continued growing throughout the 1900s, when success was framed as only achievable through relentless effort. These ideas gave power to phrases like "Work hard, play hard," which cultivated competitive corporate environments where busyness became a status symbol.</p>
@@ -108,7 +98,6 @@
   <p>This project deep-dives into sleep patterns across U.S. adults to identify how sleep relates to associated health risks, including elevated BMI and physical activity levels, and how demographic factors like ethnicity and birth country shape these patterns.</p>
 </section>
 
-<!-- DATA -->
 <section id="data">
   <h2>Data Description</h2>
   <p>This project utilizes publicly available data from the Centers for Disease Control and Prevention (CDC), specifically the <strong>NHANES (National Health and Nutrition Examination Survey)</strong> dataset. NHANES combines interview and physical examination data and is designed to assess the health and nutritional status of adults in the United States.</p>
@@ -129,41 +118,36 @@
   </div>
 </section>
 
-<!-- VISUALIZATIONS -->
 <section id="viz">
   <h2>Visualizations</h2>
 
-  <!-- FIG 1: Scatter -->
   <div class="viz-card">
     <span class="badge">Figure 1 · Altair (Python)</span>
     <h3>BMI vs. Weekday Sleep Hours</h3>
-    <img src="BMI_vs_Sleep.png" alt="Scatter plot of BMI vs Weekday Sleep Hours with regression line"/>
+    <img src="images/BMI vs Sleep.png" alt="Scatter plot of BMI vs Weekday Sleep Hours with regression line"/>
     <p class="takeaway">
       <strong>Takeaway:</strong> There is a clear negative trend between sleep hours and BMI — participants sleeping fewer hours on weekdays tend to have higher BMIs. The regression line shows those sleeping 2–3 hours average a BMI above 30 (obese range), while those sleeping longer trend lower. This supports the hypothesis that shorter sleep duration is a risk factor for elevated BMI.
     </p>
   </div>
 
-  <!-- FIG 2: Heatmap -->
   <div class="viz-card">
     <span class="badge">Figure 2 · Altair (Python)</span>
     <h3>Average BMI by Weekday Sleep Hours and Ethnicity</h3>
-    <img src="Average_BMI_by_Sleep_and_Ethnicity.png" alt="Heatmap of average BMI by sleep hours and ethnicity"/>
+    <img src="images/Average BMI by Sleep and Ethnicity.png" alt="Heatmap of average BMI by sleep hours and ethnicity"/>
     <p class="takeaway">
       <strong>Takeaway:</strong> Ethnicity meaningfully moderates the sleep–BMI relationship. Mexican American and Non-Hispanic Black participants show higher average BMIs across most sleep durations. Both very short (2–3 hrs) and very long (14–15 hrs) sleep are associated with the highest BMIs across groups, suggesting a non-linear relationship rather than a simple one.
     </p>
   </div>
 
-  <!-- FIG 3: Boxplot -->
   <div class="viz-card">
     <span class="badge">Figure 3 · Matplotlib (Python)</span>
     <h3>Weekday Sleep Hours by Moderate Work Activity</h3>
-    <img src="improved_activity_chart.png" alt="Boxplot of weekday sleep hours by days of moderate work activity"/>
+    <img src="images/improved_activity_chart.png" alt="Boxplot of weekday sleep hours by days of moderate work activity"/>
     <p class="takeaway">
       <strong>Takeaway:</strong> People who engage in more days of moderate work activity per week tend to sleep slightly fewer hours. Median sleep hours declines from ~7.5 hrs (1 day/week) toward ~7.2 hrs (5–6 days/week). This confirms that heavier physical work schedules are associated with reduced sleep time.
     </p>
   </div>
 
-  <!-- FIG 4: D3 Bar Chart -->
   <div class="viz-card">
     <span class="badge d3">Figure 4 · D3.js (Interactive)</span>
     <h3>Top 10 Variables Most Correlated with Weekday Sleep</h3>
@@ -179,17 +163,15 @@
     </p>
   </div>
 
-  <!-- FIG 5: Stacked Bar -->
   <div class="viz-card">
     <span class="badge">Figure 5 · ggplot2 (R)</span>
     <h3>Sleep Category Composition by Birth Country and Gender</h3>
-    <img src="sleep_category_chart.png" alt="Stacked bar chart of sleep categories by birth country and gender"/>
+    <img src="images/sleep_category_chart.png" alt="Stacked bar chart of sleep categories by birth country and gender"/>
     <p class="takeaway">
       <strong>Takeaway:</strong> Participants born in Mexico are more likely to fall in the "Recommended" sleep category compared to those born in the U.S., for both men and women. U.S.-born participants show a higher share of short sleep (&lt;7 hrs), reflecting the impact of American work culture on sleep habits. This pattern is consistent across both genders.
     </p>
   </div>
 
-  <!-- FIG 6: D3 Histogram -->
   <div class="viz-card">
     <span class="badge d3">Figure 6 · D3.js (Interactive)</span>
     <h3>Sleep Duration Distribution by Ethnicity</h3>
@@ -208,7 +190,6 @@
 
 </section>
 
-<!-- FINDINGS -->
 <section id="findings">
   <h2>Summary &amp; Findings</h2>
   <p>Our five visualizations collectively show that sleep deprivation in the U.S. is shaped by work demands, socioeconomic status, ethnicity, and birth country. Three key conclusions emerge from the data:</p>
@@ -232,7 +213,6 @@
   <p style="margin-top:1.5rem;"><strong>Future directions:</strong> Incorporating depression and hypertension outcomes from NHANES would complete the health risk picture. Time-series analysis could show whether post-pandemic awareness of burnout has actually improved population sleep over recent years.</p>
 </section>
 
-<!-- REFERENCES -->
 <section id="references">
   <h2>References</h2>
   <ul class="ref-list">
@@ -250,13 +230,11 @@
 <div class="tooltip" id="tip"></div>
 
 <script>
-// Tooltip helpers
 const tip = document.getElementById('tip');
 function showTip(html, e) { tip.innerHTML = html; tip.style.opacity = '1'; moveTip(e); }
 function moveTip(e) { tip.style.left = (e.clientX+12)+'px'; tip.style.top = (e.clientY-34)+'px'; }
 function hideTip() { tip.style.opacity = '0'; }
 
-// ── D3 BAR CHART ──
 const corrData = [
   { v: 'free_breakfast',        r: 0.298 },
   { v: 'free_summer_meal',      r: 0.188 },
@@ -324,7 +302,6 @@ function drawBar() {
 drawBar();
 window.addEventListener('resize', drawBar);
 
-// ── D3 HISTOGRAM ──
 const histData = {
   'All':               [{h:2,n:42},{h:3,n:95},{h:4,n:280},{h:5,n:590},{h:6,n:1240},{h:7,n:2100},{h:8,n:1980},{h:9,n:940},{h:10,n:480},{h:11,n:180},{h:12,n:80}],
   'Mexican American':  [{h:2,n:12},{h:3,n:28},{h:4,n:65},{h:5,n:120},{h:6,n:210},{h:7,n:340},{h:8,n:380},{h:9,n:200},{h:10,n:95},{h:11,n:42},{h:12,n:20}],
@@ -356,7 +333,6 @@ function drawHist() {
   const x = d3.scaleBand().domain(data.map(d=>d.h)).range([0,W]).padding(0.2);
   const y = d3.scaleLinear().domain([0,d3.max(data,d=>d.n)*1.15]).range([H,0]);
 
-  // Recommended zone
   svg.append('rect')
     .attr('x',x(7)).attr('width',x(9)+x.bandwidth()-x(7))
     .attr('y',0).attr('height',H).attr('fill','rgba(45,125,210,0.1)');
