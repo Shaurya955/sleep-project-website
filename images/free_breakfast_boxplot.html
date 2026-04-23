@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@6"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c2df222c95b6a0ac82c0b371fdbd0a34"}, "mark": {"type": "boxplot", "size": 40}, "encoding": {"color": {"field": "Response", "legend": null, "type": "nominal"}, "column": {"field": "Program", "title": null, "type": "nominal"}, "tooltip": [{"field": "Program", "title": "Program", "type": "nominal"}, {"field": "Response", "title": "Response", "type": "nominal"}], "x": {"field": "Response", "title": "Receives Program", "type": "nominal"}, "y": {"field": "Weekday Sleep Hours", "title": "Weekday Sleep Hours", "type": "quantitative"}}, "height": 400, "title": "Weekday Sleep Hours by Free Breakfast and Free Summer Meal Status", "width": 250, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-c2df222c95b6a0ac82c0b371fdbd0a34": [{"Weekday Sleep Hours": 8.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 8.5, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 8.5, "Program": "Receives Free Breakfast", "Response": "No"}, {"Weekday Sleep Hours": 8.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 3.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 5.5, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 7.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 10.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 5.5, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 9.5, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 4.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 8.0, "Program": "Receives Free Breakfast", "Response": "No"}, {"Weekday Sleep Hours": 8.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 10.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 7.5, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 7.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 10.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 6.5, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 9.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 8.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 9.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 6.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 7.5, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 6.5, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 6.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 9.0, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 6.5, "Program": "Receives Free Breakfast", "Response": "Yes"}, {"Weekday Sleep Hours": 8.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 8.5, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 8.5, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 8.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 3.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 5.5, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 7.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 10.0, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 5.5, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 9.5, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 4.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 8.0, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 8.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 10.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 7.5, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 7.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 10.0, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 6.5, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 9.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 8.0, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 9.0, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 6.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 7.5, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 6.5, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 6.0, "Program": "Receives Free Summer Meal", "Response": "Yes"}, {"Weekday Sleep Hours": 9.0, "Program": "Receives Free Summer Meal", "Response": "No"}, {"Weekday Sleep Hours": 6.5, "Program": "Receives Free Summer Meal", "Response": "No"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
