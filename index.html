@@ -135,6 +135,22 @@
       <strong>Takeaway:</strong> Socioeconomic proxies (free_breakfast, free_summer_meal) are most positively correlated with sleep hours. Work variables (hours_last_week, days_moderate_work) show the strongest negative correlations — confirming that heavier work demands reduce sleep. <em>Hover over bars for exact values. Use buttons to filter by direction.</em>
     </p>
   </div>
+  
+  <div class="viz-card">
+    <span class="badge d3">Figure 6 · D3.js (Interactive)</span>
+    <h3>Sleep Duration Distribution by Ethnicity</h3>
+    <div class="controls">
+      <span>Ethnicity:</span>
+      <button class="active" id="e-all" onclick="filterDist('All')">All</button>
+      <button id="e-mex" onclick="filterDist('Mexican American')">Mexican American</button>
+      <button id="e-nhb" onclick="filterDist('Non-Hispanic Black')">Non-Hisp. Black</button>
+      <button id="e-nhw" onclick="filterDist('Non-Hispanic White')">Non-Hisp. White</button>
+    </div>
+    <div id="d3-hist"></div>
+    <p class="takeaway">
+      <strong>Takeaway:</strong> Most participants cluster around 6–8 hours of sleep. Non-Hispanic Black participants show a heavier left tail (more short sleepers), consistent with the higher BMIs seen in the heatmap. Mexican American participants skew slightly toward longer sleep durations. <em>Click ethnicity buttons to compare distributions.</em>
+    </p>
+  </div>
 
   <div class="viz-card">
     <span class="badge">Figure 2 · Altair (Python)</span>
@@ -171,21 +187,7 @@
     </p>
   </div>
 
-   <div class="viz-card">
-    <span class="badge d3">Figure 6 · D3.js (Interactive)</span>
-    <h3>Sleep Duration Distribution by Ethnicity</h3>
-    <div class="controls">
-      <span>Ethnicity:</span>
-      <button class="active" id="e-all" onclick="filterDist('All')">All</button>
-      <button id="e-mex" onclick="filterDist('Mexican American')">Mexican American</button>
-      <button id="e-nhb" onclick="filterDist('Non-Hispanic Black')">Non-Hisp. Black</button>
-      <button id="e-nhw" onclick="filterDist('Non-Hispanic White')">Non-Hisp. White</button>
-    </div>
-    <div id="d3-hist"></div>
-    <p class="takeaway">
-      <strong>Takeaway:</strong> Most participants cluster around 6–8 hours of sleep. Non-Hispanic Black participants show a heavier left tail (more short sleepers), consistent with the higher BMIs seen in the heatmap. Mexican American participants skew slightly toward longer sleep durations. <em>Click ethnicity buttons to compare distributions.</em>
-    </p>
-  </div>
+   
 
 
 </section>
